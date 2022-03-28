@@ -48,7 +48,7 @@ world = {};
 function drawCircle(context,entity) {
     with(context) {
         beginPath();                
-        lineWidth = 3;
+        lineWidth = 5;
         var x = entity["x"];
         var y = entity["y"];
         //moveTo(x,y);
@@ -64,7 +64,7 @@ function prepEntity(entity) {
         entity["colour"] = "#FF0000";
     }
     if (!entity["radius"]) {
-        entity["radius"] = 50;
+        entity["radius"] = 30;
     }
     return entity;
 }
@@ -231,16 +231,16 @@ mouse = (function() {
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
+    addEntityWithoutName({'x':x,'y':y,'colour':'#ffff00'});
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'red'});
+    addEntityWithoutName({'x':x,'y':y,'colour':'#00ffff'});
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'green',
-                          'radius':10});
+    addEntityWithoutName({'x':x,'y':y,'colour':'#fffafa',
+                          'radius':5});
 });
 
 
