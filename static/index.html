@@ -258,7 +258,7 @@ function wsSetup() {
     socket.onopen = function() {
         //XXX: TODO What are you going to do here?
         debug("WS onopen: " + wscounter);
-        socket.send(JSON.stringify({ "WS onopen": "GET world" }));
+        socket.send(JSON.stringify({"WS onopen": "GET world"}));
         wscounter++;
     };
     socket.onerror = function(msg) {
@@ -268,9 +268,9 @@ function wsSetup() {
         try {
             debug("WebSocket Recv:" + msg.data);
             //XXX: TODO What are you going to do here?
-            let message = JSON.parse(msg.data);
-            for (let entity in message) {
-                world[entity] = message[entity];
+            var message = JSON.parse(msg.data);
+            for (let i in message) {
+                world[i] = message[i];
             }
             drawNextFrame();            
         } catch (e) {

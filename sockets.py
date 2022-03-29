@@ -67,9 +67,6 @@ def send_all(msg):
     for client in clients:
         client.put( msg )
 
-def send_all_json(obj):
-    send_all( json.dumps(obj) )
-
 class Client:
     def __init__(self):
         self.queue = queue.Queue()
@@ -79,6 +76,9 @@ class Client:
 
     def get(self):
         return self.queue.get()
+
+def send_all_json(obj):
+    send_all( json.dumps(obj) )
 
 def set_listener( entity, data ):
     ''' do something with the update ! '''
@@ -97,9 +97,11 @@ def read_ws(ws,client):
         while True:
             msg = ws.receive()
             print("WS RECV: %s" % msg)
-            if msg is not None:
+            if (msg != None):
                 packet = json.loads(msg)
                 send_all_json( packet )
+                for i in packet:
+                    myWorld.set(i, packet[i])
             else:
                 break
     except:
@@ -111,10 +113,9 @@ def subscribe_socket(ws):
        websocket and read updates from the websocket '''
     client = Client()
     clients.append(client)
-    g = gevent.spawn( read_ws, ws, client )    
+    g = gevent.spawn(read_ws, ws, client)    
     try:
         while True:
-            # block here
             msg = client.get()
             ws.send(msg)
     except Exception as e:# WebSocketError as e:
