@@ -67,6 +67,7 @@ def send_all(msg):
     for client in clients:
         client.put( msg )
 
+#source: adapted from https://github.com/abramhindle/WebSocketsExamples/blob/master/chat.py
 class Client:
     def __init__(self):
         self.queue = queue.Queue()
@@ -91,6 +92,7 @@ def hello():
     '''Return something coherent here.. perhaps redirect to /static/index.html '''
     return redirect("/static/index.html")
 
+#source: adapted from https://github.com/abramhindle/WebSocketsExamples/blob/master/chat.py
 def read_ws(ws,client):
     '''A greenlet function that reads from the websocket and updates the world'''
     try:
@@ -107,6 +109,7 @@ def read_ws(ws,client):
     except:
         '''Done'''
 
+#source: adapted from https://github.com/abramhindle/WebSocketsExamples/blob/master/chat.py
 @sockets.route('/subscribe')
 def subscribe_socket(ws):
     '''Fufill the websocket URL of /subscribe, every update notify the
