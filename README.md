@@ -59,9 +59,9 @@ Contributors
 * Mark Galloway
 * Abram Hindle
 * Cole Mackenzie
+* Aaron Zhang
 
 References
 ============
-Aaron Zhang
-https://github.com/aaronz1999/CMPUT404-assignment-ajax
-https://github.com/abramhindle/WebSocketsExamples
+* https://github.com/aaronz1999/CMPUT404-assignment-ajax
+* https://github.com/abramhindle/WebSocketsExamples
